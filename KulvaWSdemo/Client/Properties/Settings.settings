@@ -1,0 +1,18 @@
+﻿<?xml version='1.0' encoding='utf-8'?>
+<SettingsFile xmlns="http://schemas.microsoft.com/VisualStudio/2004/01/settings" CurrentProfile="(Default)" GeneratedClassNamespace="Kulva.Properties" GeneratedClassName="Settings">
+  <Profiles />
+  <Settings>
+    <Setting Name="ClientID" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">{1B4D0340-BF25-4A30-8F99-AD209489524C}</Value>
+    </Setting>
+    <Setting Name="DeviceID" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">1</Value>
+    </Setting>
+    <Setting Name="IgnoreCertWarnings" Type="System.Boolean" Scope="Application">
+      <Value Profile="(Default)">False</Value>
+    </Setting>
+    <Setting Name="Url" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">http://localhost:4321/Kulva/Kulva.svc</Value>
+    </Setting>
+  </Settings>
+</SettingsFile>
