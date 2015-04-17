@@ -13,6 +13,7 @@ namespace Kulva
         private readonly System.ServiceModel.Channels.Binding _bind;
         private readonly EndpointAddress _endpoint;
         private readonly string _username, _password;
+
         internal KulvaTalker()
         {
             if (Properties.Settings.Default.IgnoreCertWarnings)
@@ -22,10 +23,20 @@ namespace Kulva
             var url = Properties.Settings.Default.Url;
             _endpoint = new EndpointAddress(url);
             _bind = CustomBindingCreator.Create(url);
-            if (url.StartsWith("https")) //local test server is http://, production test is https://
-            {
+            //if (url.StartsWith("https")) //local test server is http://, production test is https://
+            //{
                 _username = Properties.Settings.Default.ProdTestUsername;
                 _password = Properties.Settings.Default.ProdTestPassword;
+            //}
+            PrintColors("Target URL: ", url, ConsoleColor.Cyan);
+            if (!string.IsNullOrEmpty(_username))
+            {
+                PrintColors("Username: ", _username, ConsoleColor.Cyan);
+                PrintColors("Password: ", _password, ConsoleColor.Cyan);
+            }
+            else
+            {
+                PrintColors("Not using ", "credentials", ConsoleColor.Cyan);
             }
         }
 
@@ -118,7 +129,7 @@ namespace Kulva
             }
         }
 
-        static private void PrintColors(string text,  string text2, ConsoleColor color, bool newline = true)
+        static private void PrintColors(string text, string text2, ConsoleColor color, bool newline = true)
         {
             Console.ForegroundColor = ConsoleColor.White;
             Console.Write(text);
