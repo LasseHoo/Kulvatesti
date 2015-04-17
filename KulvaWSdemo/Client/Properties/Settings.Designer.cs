@@ -58,5 +58,23 @@ namespace Kulva.Properties {
                 return ((string)(this["Url"]));
             }
         }
+        
+        [global::System.Configuration.ApplicationScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("ws-kulvatest")]
+        public string ProdTestUsername {
+            get {
+                return ((string)(this["ProdTestUsername"]));
+            }
+        }
+        
+        [global::System.Configuration.ApplicationScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("Astro-orava pilvessä!")]
+        public string ProdTestPassword {
+            get {
+                return ((string)(this["ProdTestPassword"]));
+            }
+        }
     }
 }

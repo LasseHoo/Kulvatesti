@@ -40,12 +40,13 @@
   <ItemGroup>
     <Reference Include="System" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Runtime.Serialization" />
     <Reference Include="System.ServiceModel" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="ConsolePrinter.cs" />
     <Compile Include="IKulva.cs" />
-    <Compile Include="Kulva.cs" />
+    <Compile Include="KulvaServer.cs" />
     <Compile Include="ProgramSRV.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

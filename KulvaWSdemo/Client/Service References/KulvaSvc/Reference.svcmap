@@ -1,17 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
-<ReferenceGroup xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" ID="660610bb-a45c-459c-aa75-cdc582c2709a" xmlns="urn:schemas-microsoft-com:xml-wcfservicemap">
+<ReferenceGroup xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" ID="35e68356-c66a-48df-a2aa-2f9dc20f353a" xmlns="urn:schemas-microsoft-com:xml-wcfservicemap">
   <ClientOptions>
     <GenerateAsynchronousMethods>false</GenerateAsynchronousMethods>
-    <GenerateTaskBasedAsynchronousMethod>true</GenerateTaskBasedAsynchronousMethod>
     <EnableDataBinding>true</EnableDataBinding>
     <ExcludedTypes />
     <ImportXmlTypes>false</ImportXmlTypes>
     <GenerateInternalTypes>false</GenerateInternalTypes>
     <GenerateMessageContracts>false</GenerateMessageContracts>
     <NamespaceMappings />
-    <CollectionMappings>
-      <CollectionMapping TypeName="System.Collections.Generic.List`1" Category="List" />
-    </CollectionMappings>
+    <CollectionMappings />
     <GenerateSerializableTypes>true</GenerateSerializableTypes>
     <Serializer>Auto</Serializer>
     <UseSerializerForFaults>true</UseSerializerForFaults>
@@ -24,11 +21,12 @@
     <MetadataSource Address="http://app.dev.ad/Kulva/Kulva.svc" Protocol="http" SourceId="1" />
   </MetadataSources>
   <Metadata>
-    <MetadataFile FileName="Kulva.wsdl" MetadataType="Wsdl" ID="513f5e5e-5ed9-44a1-9274-0787ee73452f" SourceId="1" SourceUrl="http://app.dev.ad/Kulva/Kulva.svc?wsdl" />
-    <MetadataFile FileName="Kulva.xsd" MetadataType="Schema" ID="be1400d0-555d-40b0-8e81-8a3a3d640a2a" SourceId="1" SourceUrl="http://app.dev.ad/Kulva/Kulva.svc?xsd=xsd0" />
-    <MetadataFile FileName="Kulva1.wsdl" MetadataType="Wsdl" ID="2f3cd80e-1b7c-415b-baee-a0c3f51a3276" SourceId="1" SourceUrl="http://app.dev.ad/Kulva/Kulva.svc?wsdl=wsdl0" />
-    <MetadataFile FileName="Kulva1.xsd" MetadataType="Schema" ID="a845bdd8-efa2-49fb-bc1b-7b9bec24c73c" SourceId="1" SourceUrl="http://app.dev.ad/Kulva/Kulva.svc?xsd=xsd1" />
-    <MetadataFile FileName="Kulva.disco" MetadataType="Disco" ID="2f490994-0983-42cf-ab7f-8e1c64b84032" SourceId="1" SourceUrl="http://app.dev.ad/Kulva/Kulva.svc?disco" />
+    <MetadataFile FileName="Kulva.wsdl" MetadataType="Wsdl" ID="78066c5d-373c-4522-b82d-b6f74b096cfc" SourceId="1" SourceUrl="http://app.dev.ad/Kulva/Kulva.svc?wsdl" />
+    <MetadataFile FileName="Kulva1.wsdl" MetadataType="Wsdl" ID="ca345709-de70-4df3-9baf-a3d66d9f083c" SourceId="1" SourceUrl="http://app.dev.ad/Kulva/Kulva.svc?wsdl=wsdl0" />
+    <MetadataFile FileName="Kulva.disco" MetadataType="Disco" ID="e849cc1e-767d-4237-9d5c-a7a6630f09ae" SourceId="1" SourceUrl="http://app.dev.ad/Kulva/Kulva.svc?disco" />
+    <MetadataFile FileName="Kulva.xsd" MetadataType="Schema" ID="aae5271b-3aa3-47b6-a476-793053577478" SourceId="1" SourceUrl="http://app.dev.ad/Kulva/Kulva.svc?xsd=xsd2" />
+    <MetadataFile FileName="Kulva1.xsd" MetadataType="Schema" ID="191bf520-0458-4367-9064-159ed1ef3501" SourceId="1" SourceUrl="http://app.dev.ad/Kulva/Kulva.svc?xsd=xsd0" />
+    <MetadataFile FileName="Kulva2.xsd" MetadataType="Schema" ID="e1961c53-9ea9-42a9-8ee8-bce134d2fa85" SourceId="1" SourceUrl="http://app.dev.ad/Kulva/Kulva.svc?xsd=xsd1" />
   </Metadata>
   <Extensions>
     <ExtensionFile FileName="configuration91.svcinfo" Name="configuration91.svcinfo" />

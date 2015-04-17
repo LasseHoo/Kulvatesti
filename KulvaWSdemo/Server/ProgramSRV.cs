@@ -13,9 +13,9 @@ namespace KulvaServer
                 //netsh http add urlacl url=http://+:4321/Kulva user=DEV\hynnila
                 var httpBaseAddress = new Uri("http://localhost:4321/Kulva/Kulva.svc");
 
-                using (var host = new ServiceHost(typeof (Kulva),new[] {httpBaseAddress}))
+                using (var host = new ServiceHost(typeof(KulvaSRV), new[] { httpBaseAddress }))
                 {
-                    host.AddServiceEndpoint(typeof (IKulva), new BasicHttpBinding(), "");
+                    host.AddServiceEndpoint(typeof(KulvaWCF.IKulva), new BasicHttpBinding(), "");
                     host.Description.Behaviors.Add(new ServiceMetadataBehavior { HttpGetEnabled = true });
                     host.Open();
 

@@ -9,23 +9,282 @@
 //------------------------------------------------------------------------------
 
 namespace Kulva.KulvaSvc {
+    using System.Runtime.Serialization;
+    using System;
     
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
+    [System.Runtime.Serialization.DataContractAttribute(Name="Entry", Namespace="http://schemas.datacontract.org/2004/07/KulvaWCF")]
+    [System.SerializableAttribute()]
+    public partial class Entry : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
+        
+        [System.NonSerializedAttribute()]
+        private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
+        
+        private Kulva.KulvaSvc.Identity IdentityField;
+        
+        private string CardIdField;
+        
+        private string ReasonCodeField;
+        
+        private System.DateTime OccurredTimeField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private System.Nullable<System.DateTime> EndTimeField;
+        
+        [global::System.ComponentModel.BrowsableAttribute(false)]
+        public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
+            get {
+                return this.extensionDataField;
+            }
+            set {
+                this.extensionDataField = value;
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute(IsRequired=true)]
+        public Kulva.KulvaSvc.Identity Identity {
+            get {
+                return this.IdentityField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.IdentityField, value) != true)) {
+                    this.IdentityField = value;
+                    this.RaisePropertyChanged("Identity");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute(IsRequired=true, Order=1)]
+        public string CardId {
+            get {
+                return this.CardIdField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.CardIdField, value) != true)) {
+                    this.CardIdField = value;
+                    this.RaisePropertyChanged("CardId");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute(IsRequired=true, Order=2)]
+        public string ReasonCode {
+            get {
+                return this.ReasonCodeField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.ReasonCodeField, value) != true)) {
+                    this.ReasonCodeField = value;
+                    this.RaisePropertyChanged("ReasonCode");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute(IsRequired=true, Order=3)]
+        public System.DateTime OccurredTime {
+            get {
+                return this.OccurredTimeField;
+            }
+            set {
+                if ((this.OccurredTimeField.Equals(value) != true)) {
+                    this.OccurredTimeField = value;
+                    this.RaisePropertyChanged("OccurredTime");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute(Order=4)]
+        public System.Nullable<System.DateTime> EndTime {
+            get {
+                return this.EndTimeField;
+            }
+            set {
+                if ((this.EndTimeField.Equals(value) != true)) {
+                    this.EndTimeField = value;
+                    this.RaisePropertyChanged("EndTime");
+                }
+            }
+        }
+        
+        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
+        
+        protected void RaisePropertyChanged(string propertyName) {
+            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
+            if ((propertyChanged != null)) {
+                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
+            }
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
+    [System.Runtime.Serialization.DataContractAttribute(Name="Identity", Namespace="http://schemas.datacontract.org/2004/07/KulvaWCF")]
+    [System.SerializableAttribute()]
+    public partial class Identity : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
+        
+        [System.NonSerializedAttribute()]
+        private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
+        
+        private string ClientIdField;
+        
+        private string DeviceIdField;
+        
+        [global::System.ComponentModel.BrowsableAttribute(false)]
+        public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
+            get {
+                return this.extensionDataField;
+            }
+            set {
+                this.extensionDataField = value;
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute(IsRequired=true)]
+        public string ClientId {
+            get {
+                return this.ClientIdField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.ClientIdField, value) != true)) {
+                    this.ClientIdField = value;
+                    this.RaisePropertyChanged("ClientId");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute(IsRequired=true)]
+        public string DeviceId {
+            get {
+                return this.DeviceIdField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.DeviceIdField, value) != true)) {
+                    this.DeviceIdField = value;
+                    this.RaisePropertyChanged("DeviceId");
+                }
+            }
+        }
+        
+        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
+        
+        protected void RaisePropertyChanged(string propertyName) {
+            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
+            if ((propertyChanged != null)) {
+                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
+            }
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
+    [System.Runtime.Serialization.DataContractAttribute(Name="GenericResult", Namespace="http://schemas.datacontract.org/2004/07/KulvaWCF")]
+    [System.SerializableAttribute()]
+    public partial class GenericResult : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
+        
+        [System.NonSerializedAttribute()]
+        private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string DeviceIdField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string CardIdField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private int CodeField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string MessageField;
+        
+        [global::System.ComponentModel.BrowsableAttribute(false)]
+        public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
+            get {
+                return this.extensionDataField;
+            }
+            set {
+                this.extensionDataField = value;
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string DeviceId {
+            get {
+                return this.DeviceIdField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.DeviceIdField, value) != true)) {
+                    this.DeviceIdField = value;
+                    this.RaisePropertyChanged("DeviceId");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute(Order=1)]
+        public string CardId {
+            get {
+                return this.CardIdField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.CardIdField, value) != true)) {
+                    this.CardIdField = value;
+                    this.RaisePropertyChanged("CardId");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute(Order=2)]
+        public int Code {
+            get {
+                return this.CodeField;
+            }
+            set {
+                if ((this.CodeField.Equals(value) != true)) {
+                    this.CodeField = value;
+                    this.RaisePropertyChanged("Code");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute(Order=3)]
+        public string Message {
+            get {
+                return this.MessageField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.MessageField, value) != true)) {
+                    this.MessageField = value;
+                    this.RaisePropertyChanged("Message");
+                }
+            }
+        }
+        
+        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
+        
+        protected void RaisePropertyChanged(string propertyName) {
+            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
+            if ((propertyChanged != null)) {
+                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
+            }
+        }
+    }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
     [System.ServiceModel.ServiceContractAttribute(Namespace="http://www.elisa.fi/kulva", ConfigurationName="KulvaSvc.IKulva")]
     public interface IKulva {
         
         [System.ServiceModel.OperationContractAttribute(Action="http://www.elisa.fi/kulva/IKulva/Stamp", ReplyAction="http://www.elisa.fi/kulva/IKulva/StampResponse")]
-        string Stamp(string clientId, string deviceId, string cardId, string reasonCode, System.DateTime occurredTime, System.Nullable<System.DateTime> endTime);
+        Kulva.KulvaSvc.GenericResult Stamp(Kulva.KulvaSvc.Entry entry);
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://www.elisa.fi/kulva/IKulva/Stamp", ReplyAction="http://www.elisa.fi/kulva/IKulva/StampResponse")]
-        System.Threading.Tasks.Task<string> StampAsync(string clientId, string deviceId, string cardId, string reasonCode, System.DateTime occurredTime, System.Nullable<System.DateTime> endTime);
-        
-        [System.ServiceModel.OperationContractAttribute(Action="http://www.elisa.fi/kulva/IKulva/HeartBeat", ReplyAction="http://www.elisa.fi/kulva/IKulva/HeartBeatResponse")]
-        bool HeartBeat(string clientId, string deviceId);
+        [System.ServiceModel.OperationContractAttribute(Action="http://www.elisa.fi/kulva/IKulva/Stamps", ReplyAction="http://www.elisa.fi/kulva/IKulva/StampsResponse")]
+        Kulva.KulvaSvc.GenericResult[] Stamps(Kulva.KulvaSvc.Entry[] entries);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://www.elisa.fi/kulva/IKulva/HeartBeat", ReplyAction="http://www.elisa.fi/kulva/IKulva/HeartBeatResponse")]
-        System.Threading.Tasks.Task<bool> HeartBeatAsync(string clientId, string deviceId);
+        Kulva.KulvaSvc.GenericResult HeartBeat(Kulva.KulvaSvc.Identity identity);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://www.elisa.fi/kulva/IKulva/HeartBeats", ReplyAction="http://www.elisa.fi/kulva/IKulva/HeartBeatsResponse")]
+        Kulva.KulvaSvc.GenericResult[] HeartBeats(Kulva.KulvaSvc.Identity[] identities);
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
@@ -55,20 +314,20 @@ namespace Kulva.KulvaSvc {
                 base(binding, remoteAddress) {
         }
         
-        public string Stamp(string clientId, string deviceId, string cardId, string reasonCode, System.DateTime occurredTime, System.Nullable<System.DateTime> endTime) {
-            return base.Channel.Stamp(clientId, deviceId, cardId, reasonCode, occurredTime, endTime);
+        public Kulva.KulvaSvc.GenericResult Stamp(Kulva.KulvaSvc.Entry entry) {
+            return base.Channel.Stamp(entry);
         }
         
-        public System.Threading.Tasks.Task<string> StampAsync(string clientId, string deviceId, string cardId, string reasonCode, System.DateTime occurredTime, System.Nullable<System.DateTime> endTime) {
-            return base.Channel.StampAsync(clientId, deviceId, cardId, reasonCode, occurredTime, endTime);
+        public Kulva.KulvaSvc.GenericResult[] Stamps(Kulva.KulvaSvc.Entry[] entries) {
+            return base.Channel.Stamps(entries);
         }
         
-        public bool HeartBeat(string clientId, string deviceId) {
-            return base.Channel.HeartBeat(clientId, deviceId);
+        public Kulva.KulvaSvc.GenericResult HeartBeat(Kulva.KulvaSvc.Identity identity) {
+            return base.Channel.HeartBeat(identity);
         }
         
-        public System.Threading.Tasks.Task<bool> HeartBeatAsync(string clientId, string deviceId) {
-            return base.Channel.HeartBeatAsync(clientId, deviceId);
+        public Kulva.KulvaSvc.GenericResult[] HeartBeats(Kulva.KulvaSvc.Identity[] identities) {
+            return base.Channel.HeartBeats(identities);
         }
     }
 }

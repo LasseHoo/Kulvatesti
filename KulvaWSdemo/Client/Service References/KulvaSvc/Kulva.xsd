@@ -1,37 +1,47 @@
 <?xml version="1.0" encoding="utf-8"?>
-<xs:schema xmlns:tns="http://www.elisa.fi/kulva" elementFormDefault="qualified" targetNamespace="http://www.elisa.fi/kulva" xmlns:xs="http://www.w3.org/2001/XMLSchema">
-  <xs:element name="Stamp">
-    <xs:complexType>
-      <xs:sequence>
-        <xs:element minOccurs="0" name="clientId" nillable="true" type="xs:string" />
-        <xs:element minOccurs="0" name="deviceId" nillable="true" type="xs:string" />
-        <xs:element minOccurs="0" name="cardId" nillable="true" type="xs:string" />
-        <xs:element minOccurs="0" name="reasonCode" nillable="true" type="xs:string" />
-        <xs:element minOccurs="0" name="occurredTime" type="xs:dateTime" />
-        <xs:element minOccurs="0" name="endTime" nillable="true" type="xs:dateTime" />
-      </xs:sequence>
-    </xs:complexType>
-  </xs:element>
-  <xs:element name="StampResponse">
-    <xs:complexType>
-      <xs:sequence>
-        <xs:element minOccurs="0" name="StampResult" nillable="true" type="xs:string" />
-      </xs:sequence>
-    </xs:complexType>
-  </xs:element>
-  <xs:element name="HeartBeat">
-    <xs:complexType>
-      <xs:sequence>
-        <xs:element minOccurs="0" name="clientId" nillable="true" type="xs:string" />
-        <xs:element minOccurs="0" name="deviceId" nillable="true" type="xs:string" />
-      </xs:sequence>
-    </xs:complexType>
-  </xs:element>
-  <xs:element name="HeartBeatResponse">
-    <xs:complexType>
-      <xs:sequence>
-        <xs:element minOccurs="0" name="HeartBeatResult" type="xs:boolean" />
-      </xs:sequence>
-    </xs:complexType>
-  </xs:element>
+<xs:schema xmlns:tns="http://schemas.datacontract.org/2004/07/KulvaWCF" elementFormDefault="qualified" targetNamespace="http://schemas.datacontract.org/2004/07/KulvaWCF" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:complexType name="Entry">
+    <xs:sequence>
+      <xs:element name="Identity" nillable="true" type="tns:Identity" />
+      <xs:element name="CardId" nillable="true" type="xs:string" />
+      <xs:element name="ReasonCode" nillable="true" type="xs:string" />
+      <xs:element name="OccurredTime" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="EndTime" nillable="true" type="xs:dateTime" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="Entry" nillable="true" type="tns:Entry" />
+  <xs:complexType name="Identity">
+    <xs:sequence>
+      <xs:element name="ClientId" nillable="true" type="xs:string" />
+      <xs:element name="DeviceId" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="Identity" nillable="true" type="tns:Identity" />
+  <xs:complexType name="GenericResult">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="DeviceId" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="CardId" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Code" type="xs:int" />
+      <xs:element minOccurs="0" name="Message" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="GenericResult" nillable="true" type="tns:GenericResult" />
+  <xs:complexType name="ArrayOfEntry">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="Entry" nillable="true" type="tns:Entry" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfEntry" nillable="true" type="tns:ArrayOfEntry" />
+  <xs:complexType name="ArrayOfGenericResult">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="GenericResult" nillable="true" type="tns:GenericResult" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfGenericResult" nillable="true" type="tns:ArrayOfGenericResult" />
+  <xs:complexType name="ArrayOfIdentity">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="Identity" nillable="true" type="tns:Identity" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfIdentity" nillable="true" type="tns:ArrayOfIdentity" />
 </xs:schema>

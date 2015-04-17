@@ -4,6 +4,7 @@
     <xsd:schema targetNamespace="http://www.elisa.fi/kulva/Imports">
       <xsd:import schemaLocation="http://app.dev.ad/Kulva/Kulva.svc?xsd=xsd0" namespace="http://www.elisa.fi/kulva" />
       <xsd:import schemaLocation="http://app.dev.ad/Kulva/Kulva.svc?xsd=xsd1" namespace="http://schemas.microsoft.com/2003/10/Serialization/" />
+      <xsd:import schemaLocation="http://app.dev.ad/Kulva/Kulva.svc?xsd=xsd2" namespace="http://schemas.datacontract.org/2004/07/KulvaWCF" />
     </xsd:schema>
   </wsdl:types>
   <wsdl:message name="IKulva_Stamp_InputMessage">
@@ -12,20 +13,40 @@
   <wsdl:message name="IKulva_Stamp_OutputMessage">
     <wsdl:part name="parameters" element="tns:StampResponse" />
   </wsdl:message>
+  <wsdl:message name="IKulva_Stamps_InputMessage">
+    <wsdl:part name="parameters" element="tns:Stamps" />
+  </wsdl:message>
+  <wsdl:message name="IKulva_Stamps_OutputMessage">
+    <wsdl:part name="parameters" element="tns:StampsResponse" />
+  </wsdl:message>
   <wsdl:message name="IKulva_HeartBeat_InputMessage">
     <wsdl:part name="parameters" element="tns:HeartBeat" />
   </wsdl:message>
   <wsdl:message name="IKulva_HeartBeat_OutputMessage">
     <wsdl:part name="parameters" element="tns:HeartBeatResponse" />
   </wsdl:message>
+  <wsdl:message name="IKulva_HeartBeats_InputMessage">
+    <wsdl:part name="parameters" element="tns:HeartBeats" />
+  </wsdl:message>
+  <wsdl:message name="IKulva_HeartBeats_OutputMessage">
+    <wsdl:part name="parameters" element="tns:HeartBeatsResponse" />
+  </wsdl:message>
   <wsdl:portType name="IKulva">
     <wsdl:operation name="Stamp">
       <wsdl:input wsaw:Action="http://www.elisa.fi/kulva/IKulva/Stamp" message="tns:IKulva_Stamp_InputMessage" />
       <wsdl:output wsaw:Action="http://www.elisa.fi/kulva/IKulva/StampResponse" message="tns:IKulva_Stamp_OutputMessage" />
     </wsdl:operation>
+    <wsdl:operation name="Stamps">
+      <wsdl:input wsaw:Action="http://www.elisa.fi/kulva/IKulva/Stamps" message="tns:IKulva_Stamps_InputMessage" />
+      <wsdl:output wsaw:Action="http://www.elisa.fi/kulva/IKulva/StampsResponse" message="tns:IKulva_Stamps_OutputMessage" />
+    </wsdl:operation>
     <wsdl:operation name="HeartBeat">
       <wsdl:input wsaw:Action="http://www.elisa.fi/kulva/IKulva/HeartBeat" message="tns:IKulva_HeartBeat_InputMessage" />
       <wsdl:output wsaw:Action="http://www.elisa.fi/kulva/IKulva/HeartBeatResponse" message="tns:IKulva_HeartBeat_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="HeartBeats">
+      <wsdl:input wsaw:Action="http://www.elisa.fi/kulva/IKulva/HeartBeats" message="tns:IKulva_HeartBeats_InputMessage" />
+      <wsdl:output wsaw:Action="http://www.elisa.fi/kulva/IKulva/HeartBeatsResponse" message="tns:IKulva_HeartBeats_OutputMessage" />
     </wsdl:operation>
   </wsdl:portType>
 </wsdl:definitions>
