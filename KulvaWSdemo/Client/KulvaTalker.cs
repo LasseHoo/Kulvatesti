@@ -12,7 +12,7 @@ namespace Kulva
 
         private readonly System.ServiceModel.Channels.Binding _bind;
         private readonly EndpointAddress _endpoint;
-        private readonly string _username, _password;
+        private readonly NetworkCredential _creds;
 
         internal KulvaTalker()
         {
@@ -23,20 +23,22 @@ namespace Kulva
             var url = Properties.Settings.Default.Url;
             _endpoint = new EndpointAddress(url);
             _bind = CustomBindingCreator.Create(url);
-            //if (url.StartsWith("https")) //local test server is http://, production test is https://
-            //{
-                _username = Properties.Settings.Default.ProdTestUsername;
-                _password = Properties.Settings.Default.ProdTestPassword;
-            //}
+            
             PrintColors("Target URL: ", url, ConsoleColor.Cyan);
-            if (!string.IsNullOrEmpty(_username))
+            if (!string.IsNullOrEmpty(Properties.Settings.Default.ProdTestUsername))
             {
-                PrintColors("Username: ", _username, ConsoleColor.Cyan);
-                PrintColors("Password: ", _password, ConsoleColor.Cyan);
+                PrintColors("Username: ", Properties.Settings.Default.ProdTestUsername, ConsoleColor.Cyan);
+                PrintColors("Password: ", Properties.Settings.Default.ProdTestPassword, ConsoleColor.Cyan);
+                _creds = new NetworkCredential
+                {
+                    UserName = Properties.Settings.Default.ProdTestUsername,
+                    Password = Properties.Settings.Default.ProdTestPassword
+                };
             }
             else
             {
                 PrintColors("Not using ", "credentials", ConsoleColor.Cyan);
+                _creds = null;
             }
         }
 
@@ -59,10 +61,9 @@ namespace Kulva
 
             using (var client = new KulvaSvc.KulvaClient(_bind, _endpoint))
             {
-                if (!string.IsNullOrEmpty(_username))
+                if (_creds!=null)
                 {
-                    client.ClientCredentials.UserName.UserName = _username;
-                    client.ClientCredentials.UserName.Password = _password;
+                    client.ClientCredentials.Windows.ClientCredential = _creds;
                 }
                 var heartBeatResult = client.HeartBeat(i);
                 PrintColors("Heartbeat: ", heartBeatResult.Message + "\r\n", (heartBeatResult.Code==0 ? Green : Red));
@@ -71,25 +72,17 @@ namespace Kulva
 
         internal void SendAccessControlEvent(string cardId, string reasonCode, DateTime? endTime)
         {
-            string url = Properties.Settings.Default.Url;
-            PrintColors("CardID: ", cardId, Yellow, false);
-            PrintColors("\tReason: ", reasonCode, Yellow, false);
-            var startTime = DateTime.Now;
-            PrintColors(" Event time: ", DateString(startTime, "HH:mm:ss"), ConsoleColor.Magenta, false);
-            PrintColors(" End time: ", DateString(endTime), ConsoleColor.Magenta);
-
-            using (var client = new KulvaSvc.KulvaClient(_bind, _endpoint))
+            SendMultipleAccessControlEvents(new[]
             {
-                if (!string.IsNullOrEmpty(_username))
+                new KulvaSvc.Entry
                 {
-                    client.ClientCredentials.UserName.UserName = _username;
-                    client.ClientCredentials.UserName.Password = _password;
+                    CardId = cardId,
+                    EndTime = endTime,
+                    OccurredTime = DateTime.Now,
+                    ReasonCode = reasonCode,
+                    Identity = Identity
                 }
-
-                var stampResult = client.Stamp(CreateStampEntry(cardId, reasonCode, endTime));
-                PrintColors("Access Control Stamp: ", stampResult.Message + "\r\n",
-                    (stampResult.Code == 0 ? Green : Red));
-            }
+            });
         }
 
         internal static KulvaSvc.Entry CreateStampEntry(string cardId, string reasonCode, DateTime? endTime)
@@ -109,14 +102,14 @@ namespace Kulva
             string url = Properties.Settings.Default.Url;
             using (var client = new KulvaSvc.KulvaClient(_bind, _endpoint))
             {
-                if (!string.IsNullOrEmpty(_username))
+                if (_creds != null)
                 {
-                    client.ClientCredentials.UserName.UserName = _username;
-                    client.ClientCredentials.UserName.Password = _password;
+                    client.ClientCredentials.Windows.ClientCredential = _creds;
                 }
 
                 var results = client.Stamps(stamps);
-                for(int i = 0; i<results.Length;i++)
+
+                for (int i = 0; i < results.Length; i++)
                 {
                     KulvaSvc.Entry s = stamps[i];
                     PrintColors("CardID: ", s.CardId, Yellow, false);
@@ -124,7 +117,7 @@ namespace Kulva
                     PrintColors(" Event time: ", DateString(s.OccurredTime, "HH:mm:ss"), ConsoleColor.Magenta, false);
                     PrintColors(" End time: ", DateString(s.EndTime), ConsoleColor.Magenta);
                     PrintColors("Access Control Stamp: ", results[i].Message, //+ "\r\n",
-                    (results[i].Code == 0 ? Green : Red));
+                        (results[i].Code == 0 ? Green : Red));
                 }
             }
         }

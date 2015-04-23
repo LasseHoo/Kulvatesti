@@ -7,34 +7,40 @@ namespace Kulva
         static void Main()
         {
             System.Threading.Thread.Sleep(2000); //wait for WCF server startup
-            Console.WriteLine("...");
-            var ek = new KulvaTalker();
+
+            Random r = new Random();
+            KulvaTalker ek = new KulvaTalker();
+            
             ek.SendHeartBeat();
             System.Threading.Thread.Sleep(500);
 
-            ek.SendAccessControlEvent("800", "02", null);
+
+            ek.SendAccessControlEvent(CardId(r), ReasonCode(r), null);
             System.Threading.Thread.Sleep(500);
 
             var dt = DateTime.Now;
-            ek.SendAccessControlEvent("800", "03", dt.AddHours(1));
+            ek.SendAccessControlEvent(CardId(r), ReasonCode(r), dt.AddHours(1));
 
 
             System.Threading.Thread.Sleep(500);
-            //multiple ACS events:
+
+            // Multiple ACS events:
             var e = new System.Collections.Generic.List<KulvaSvc.Entry>();
-            e.Add(KulvaTalker.CreateStampEntry("802", "03", null));
-            e.Add(KulvaTalker.CreateStampEntry("844", "03", null));
-            e.Add(KulvaTalker.CreateStampEntry("847", "03", null));
-            dt = dt.AddDays(14);
-            e.Add(KulvaTalker.CreateStampEntry("702", "20", dt));
-            dt = dt.AddDays(7);
-            e.Add(KulvaTalker.CreateStampEntry("714", "20", dt));
-            e.Add(KulvaTalker.CreateStampEntry("708", "03", null));
-            e.Add(KulvaTalker.CreateStampEntry("650", "03", null));
+            for (int i = 0; i < r.Next(5, 15); i++)
+            {
+                e.Add(KulvaTalker.CreateStampEntry(CardId(r), ReasonCode(r), EndTime(r)));
+            }
             ek.SendMultipleAccessControlEvents(e.ToArray());
 
             Console.WriteLine(" -- press any key to exit --");
             Console.ReadKey();
+        }
+        private static string CardId(Random r) { return r.Next(1, 1000).ToString(); }
+        private static string ReasonCode(Random r) { return r.Next(0, 15).ToString(); }
+        private static DateTime? EndTime(Random r)
+        {
+            if (r.NextDouble() < 0.6) { return null; }
+            return DateTime.Now.AddDays(r.Next(1, 21)).Date;
         }
     }
 }
